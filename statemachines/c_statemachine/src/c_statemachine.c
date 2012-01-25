@@ -27,10 +27,11 @@ int main()
 	// simulate how it works.
     TurnstileSM( TICK );
     TurnstileSM( PAYED );
-
+    TurnstileSM( PERSONPASSED );
     /* In an actual system it would look more like this:
      *
-     * while (1) {
+     * while (1)
+     * {
      * 		event = Input();
      * 		TurnstileSM( event );
      * }
@@ -47,9 +48,11 @@ void TurnstileSM( int event )
 {
     int NextState = TS_State;
 
-    switch( TS_State ) {
+    switch( TS_State )
+    {
         case LOCKED:
-            switch (event ) {
+            switch (event )
+            {
                 case PAYED:
                     NextState = UNLOCKED;
                     break;
@@ -58,14 +61,32 @@ void TurnstileSM( int event )
             }
             break;
         case UNLOCKED:
-
+        	switch (event )
+			{
+				case PERSONPASSED:
+					NextState = LOCKED;
+					break;
+				default:
+					break;
+			}
+            break;
+        case LOCKED:
+        	switch (event )
+			{
+				case TICK:
+					NextState = LOCKED;
+					break;
+				default:
+					break;
+			}
             break;
         default:
             break;
             // The program should never get here !
     }
 
-    if (NextState != TS_State) {
+    if (NextState != TS_State)
+    {
         OnExit(TS_State);
         OnEnter(NextState);
         TS_State = NextState;
@@ -82,15 +103,18 @@ void TurnstileSM( int event )
  */
 void OnEnter( int State )
 {
+
 }
 
 void OnExit( int State)
 {
+
 }
 
 void Do( int State)
 {
-    switch (State) {
+    switch (State)
+    {
         case LOCKED:
             printf("Door is Locked!\n");
             break;
