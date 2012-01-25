@@ -74,9 +74,10 @@ void TurnstileSM( int event )
 					break;
 				case TICK:
 					Timeout++;
-					if(Timeout > 5)
+					if(Timeout > 4)
 					{
 						NextState = LOCKED;
+						Timeout = 0;
 					}
 					printf("Ticks = %i\n",Timeout);
 					break;
