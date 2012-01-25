@@ -70,7 +70,7 @@ void TurnstileSM( int event )
 					break;
 			}
             break;
-        case LOCKED:
+        case MAXSTATES:
         	switch (event )
 			{
 				case TICK:
