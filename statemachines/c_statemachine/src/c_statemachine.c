@@ -70,16 +70,7 @@ void TurnstileSM( int event )
 					break;
 			}
             break;
-        case MAXSTATES:
-        	switch (event )
-			{
-				case TICK:
-					NextState = LOCKED;
-					break;
-				default:
-					break;
-			}
-            break;
+
         default:
             break;
             // The program should never get here !
