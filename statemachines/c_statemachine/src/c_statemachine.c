@@ -26,14 +26,19 @@ int main()
 {	// By sending hardcoded events to the SM, it is possible to
 	// simulate how it works.
     TurnstileSM( PAYED );
-    TurnstileSM( PERSONPASSED );
+
     TurnstileSM( PAYED );
     int i;
-    for(i=0; i<5; i++)
+    for(i=0; i<4; i++)
 		{
-			TurnstileSM( TICK );
+    	TurnstileSM( TICK );
 		}
-
+    TurnstileSM( PERSONPASSED );
+    TurnstileSM( PAYED );
+    for(i=0; i<4; i++)
+    		{
+        	TurnstileSM( TICK );
+    		}
     /* In an actual system it would look more like this:
      *
      * while (1)
@@ -69,14 +74,20 @@ void TurnstileSM( int event )
         case UNLOCKED:
         	switch (event )
 			{
-				case PERSONPASSED:
+        		case PAYED:
+						NextState = UNLOCKED;
+						break;
+
+        		case PERSONPASSED:
 					NextState = LOCKED;
+					Timeout = 0;
 					break;
+
 				case TICK:
 					Timeout++;
 					if(Timeout > 4)
 					{
-						NextState = LOCKED;
+					NextState = LOCKED;
 						Timeout = 0;
 					}
 					printf("Ticks = %i\n",Timeout);
@@ -128,7 +139,6 @@ void Do( int State)
         case UNLOCKED:
             printf("Door is unlocked.\n");
             break;
-
     }
 }
 
