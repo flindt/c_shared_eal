@@ -58,7 +58,7 @@ int main()
 void TurnstileSM( int event )
 {
     int NextState = TS_State;
-    static int Timeout = 0;
+    static int Timeout,Count = 1, t = 5;
     switch( TS_State )
     {
         case LOCKED:
@@ -66,6 +66,8 @@ void TurnstileSM( int event )
             {
                 case PAYED:
                     NextState = UNLOCKED;
+                    Count++;
+                    printf("Persons can enter %i\n",Count);
                     break;
                 default:
                     break;
@@ -78,19 +80,26 @@ void TurnstileSM( int event )
 						NextState = UNLOCKED;
 						break;
 
-        		case PERSONPASSED:
-					NextState = LOCKED;
-					Timeout = 0;
-					break;
+				case PERSONPASSED:
+					Count--;
+					Timeout = Timeout-t;
+					if(Count < 0)
+					{
+						NextState = LOCKED;
+						Count = 1;
+						Timeout = 5;
+					}
+				break;
 
 				case TICK:
-					Timeout++;
-					if(Timeout > 4)
-					{
-					NextState = LOCKED;
-						Timeout = 0;
-					}
 					printf("Ticks = %i\n",Timeout);
+					Timeout--;
+					if(Timeout < 0)
+						{
+							NextState = LOCKED;
+							Timeout = t;
+							Count = 1;
+						}
 					break;
 				default:
 					break;
