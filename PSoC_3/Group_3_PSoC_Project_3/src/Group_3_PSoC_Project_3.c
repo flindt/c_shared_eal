@@ -1,10 +1,10 @@
 /*
  ============================================================================
  Name        : Group_3_PSoC_Project_3.c
- Author      : Lars
+ Author      : Lars, Ibrahim, Lukas
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : PSoC 4 butten interface, Project 3, Ansi-style
  ============================================================================
  */
 
