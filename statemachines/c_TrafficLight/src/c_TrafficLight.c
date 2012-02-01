@@ -104,7 +104,12 @@ void Do( int State)
 {
     switch (State)
     {
-
+    case R_RY:
+    	printf(" RED  \t RED+yellow\n");
+    	break;
+    case R_G:
+        printf(" RED  \t green\n");
+        break;
     }
 }
 
