@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 // State definitions
-enum states { R_RY, R_G, MAXSTATES };
+enum states { R_RY, R_G, R_Y, RY_R, G_R, Y_R, MAXSTATES };
 // Event definitions
 enum events { TICK, MAXEVENTS };
 
@@ -56,6 +56,9 @@ void TrafficLightSM( int event )
         case R_RY:
             switch (event )
             {
+            case TICK:
+            	NextState = R_G;
+            	break;
 			default:
 				break;
             }
@@ -110,6 +113,19 @@ void Do( int State)
     case R_G:
         printf(" RED  \t green\n");
         break;
+    case R_Y:
+        printf(" RED  \t green\n");
+        break;
+    case RY_R:
+        printf(" RED  \t green\n");
+        break;
+    case G_R:
+        printf(" RED  \t green\n");
+        break;
+    case Y_R:
+        printf(" RED  \t green\n");
+        break;
+
     }
 }
 
