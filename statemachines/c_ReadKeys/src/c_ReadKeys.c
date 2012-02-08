@@ -54,6 +54,7 @@ int ReadKeys(int RawKeys)
 	//		key1_count++;
 	//	}
 
+	// Allways return even if not keypress was detected, dont wait for it !
 	return NO_EVENT;
 }
 
@@ -83,8 +84,8 @@ void testReadKeys(void)
 	else if ( ReadKeys(0x18) != NO_EVENT ) { printf(" failed on 18. call"); }
 	else if ( ReadKeys(0x18) != KEY3_EVENT ) { printf(" failed on 19. call"); }
 	else if ( ReadKeys(0x18) != KEY4_EVENT) { printf(" failed on 20. call"); }
-	else if ( ReadKeys(0x18) != KEY4_EVENT) { printf(" failed on 21. call"); }
-	else if ( ReadKeys(0x18) != KEY4_EVENT) { printf(" failed on 22. call"); }
+	else if ( ReadKeys(0x18) != NO_EVENT) { printf(" failed on 21. call"); }
+	else if ( ReadKeys(0x18) != NO_EVENT) { printf(" failed on 22. call"); }
 	else printf("passed !");
 }
 
