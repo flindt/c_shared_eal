@@ -10,13 +10,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main(void) {
 	puts("Random groups ..."); /* prints Random numbers ... */
 
+	// randomize(); // this is neded so different numbers will be generated every time
+		/* Simple "srand()" seed: just use "time()" */
+		unsigned int iseed = (unsigned int) time(NULL );
+		srand(iseed);
+
 	// Get input from user
-	int noStudents = 7;
-	int groupSize = 2;
+	int noStudents = 19;
+	int groupSize = 5;
 
 	// Create random list
 	int randomList[20];
