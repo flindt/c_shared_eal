@@ -28,9 +28,15 @@ int main(void) {
 	while (loopCount < noStudents) {
 		thisRandomNumber = ((unsigned) rand() % noStudents) +1;	// Modulus % will limit the random number to our range
 																	// +1 so we can count from 1 in the class
-
-		randomList[loopCount]=thisRandomNumber;
-		loopCount++;
+		for (loopCountInner=0; loopCountInner< loopCount; loopCountInner++){
+			if (randomList[loopCountInner]==thisRandomNumber) {		// if this number has been used, do not add it twice
+				break;
+			}
+		}
+		if (loopCountInner==loopCount) {
+			randomList[loopCount]=thisRandomNumber;
+			loopCount++;
+		}
 	}
 
 	// Print output
