@@ -39,14 +39,14 @@ int main(void) {
 				break;
 			}
 		}
-		if (loopCountInner==loopCount) {
+		if (loopCountInner==loopCount) {							// if the loop above has finished this is a new number
 			randomList[loopCount]=thisRandomNumber;
 			loopCount++;
 		}
 	}
 
-	// Print output
 
+	// Print output
 	for (loopCount = 0; loopCount < noStudents;
 			loopCount = loopCount + groupSize) {
 		for (loopCountInner = 0;
