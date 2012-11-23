@@ -12,6 +12,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+
+
 int main(void) {
 	puts("Random groups ..."); /* prints Random numbers ... */
 
@@ -21,14 +24,15 @@ int main(void) {
 		srand(iseed);
 
 	// Get input from user
-	int noStudents = 19;
-	int groupSize = 5;
+	// For a first implementaion we cheat and just initialize the variables
+	int noStudents = 14;
+	int groupSize = 2;
 
 	// Create random list
-	int randomList[20];
-	int loopCount = 0;
-	int loopCountInner = 0;
-	int nextIndex = 0;
+	int randomList[80];			// Array to hold the list of groups
+
+	int loopCount = 0;			// This variable will count how many students we have put in the array
+	int loopCountInner = 0;		// This variable will count the students in each group
 	int thisRandomNumber;
 
 	while (loopCount < noStudents) {
